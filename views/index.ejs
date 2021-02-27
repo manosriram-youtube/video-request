@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+    <h4>Video Request - manosriram Youtube</h4>
+    <% if (error) { %>
+        <h4 id="err"><%=error%></h4>
+    <% } %>
+    <form id="request" action="/request" method="POST">
+        <input required placeholder="Your video idea" id="video" type="text" name="video">
+        <br />
+        <br />
+        <input required placeholder="Name" id="name" type="text" name="name">
+        <br />
+        <br />
+        <button type="submit">Submit</button>
+        <a href="/">home</a>
+    </form>
+    <hr />
+    <br />
+    <br />
+    <div id="ideas">
+        <% for (let t=0;t<requests.length;++t) { %>
+            <h4 id="idea" class="name">
+                <%=requests[t].name%>
+            </h4>
+            <span id="idea-desc"><%= requests[t].idea %>
+            </span>
+            <br />
+            <br />
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+body {
+    font-family: "Anonymous Pro", monospace;
+}
+
+#err {
+    color: red;
+}
+
+input {
+    width: 50%;
+    height: 2vh;
+}
+
+button {
+    height: 30px;
+}
+
+#idea {
+    margin: 0;
+}
+
+.name {
+    font-size: 1.5vw;
+    font-weight: 800;
+}
+#idea-desc {
+    width: 50%;
+}
