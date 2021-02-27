@@ -9,12 +9,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/views"));
 var connection = mysql.createConnection({
-    host: "localhost",
+    host: "127.0.0.1",
+    port: 3306,
+    user:"mysql",
     user: "root",
     password: "password",
     database: "videorequest"
 });
-connection.connect();
+connection.connect((err, d) => {
+	if (err) console.log(err);
+});
 
 app.post("/request", (req, res) => {
     const { video, name } = req.body;
@@ -30,14 +34,14 @@ app.post("/request", (req, res) => {
         (err, data) => {
             if (err) throw err;
             else {
-                return res.send("request received.");
+                return res.redirect("/");
             }
         }
     );
 });
 
 app.get("/", (req, res) => {
-    connection.query("SELECT * FROM REQUEST", (err, data) => {
+    connection.query("SELECT * FROM request", (err, data) => {
         if (err) console.log(err);
         else {
             return res.render("index", { requests: data, error: null });
